@@ -1,0 +1,52 @@
+# FastAPI and core dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+python-jose[cryptography]==3.3.0
+
+# Database and cloud services
+appwrite==4.0.0
+httpx==0.25.2
+
+# AI and ML services
+groq==0.4.1
+aiohttp==3.9.1
+transformers==4.35.2
+
+# Social media APIs
+praw==7.7.1  # Reddit API
+discord.py==2.3.2  # Discord API
+Mastodon.py==1.8.1  # Mastodon API
+tweepy==4.14.0  # Twitter/X API (optional)
+
+# GitHub integration
+PyGithub==1.59.1
+gitpython==3.1.40
+
+# Data processing and utilities
+pandas==2.1.4
+numpy==1.25.2
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Environment and configuration
+python-dotenv==1.0.0
+pydantic-settings==2.1.0
+
+# Background tasks and scheduling
+celery==5.3.4
+redis==5.0.1
+APScheduler==3.10.4
+
+# Monitoring and logging
+loguru==0.7.2
+sentry-sdk[fastapi]==1.38.0
+
+# Security
+passlib[bcrypt]==1.7.4
+python-jose==3.3.0
+
+# Testing (optional)
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
