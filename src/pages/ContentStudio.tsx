@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
-import SwifterMascot from '@/components/SwifterMascot';
+import EnhancedSwifterMascot from '@/components/EnhancedSwifterMascot';
 import { 
   GitBranch, 
   Zap, 
@@ -25,6 +25,7 @@ import {
 const ContentStudio = () => {
   const [contentType, setContentType] = useState('dev_journey');
   const [selectedPlatforms, setSelectedPlatforms] = useState(['reddit', 'discord']);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const mockGitHubActivity = [
     {
@@ -87,18 +88,20 @@ const ContentStudio = () => {
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <SwifterMascot />
-            <div>
-              <h1 className="text-3xl font-bold text-foreground">Content Studio</h1>
-              <p className="text-muted-foreground">AI-powered social media content creation</p>
-            </div>
+        <div className="flex items-center gap-6 mb-8">
+          <EnhancedSwifterMascot 
+            contentGenerating={isGenerating}
+            postSuccess={false}
+            postFailure={false}
+          />
+          <div>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Content Studio
+            </h1>
+            <p className="text-lg text-muted-foreground">
+              AI-powered content creation for your social media
+            </p>
           </div>
-          <Button className="bg-primary hover:bg-primary/90">
-            <Zap className="w-4 h-4 mr-2" />
-            Generate Content
-          </Button>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -172,9 +175,25 @@ const ContentStudio = () => {
                   />
                 </div>
 
-                <Button className="w-full bg-primary hover:bg-primary/90">
-                  <Zap className="w-4 h-4 mr-2" />
-                  Generate AI Content
+                <Button 
+                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+                  onClick={() => {
+                    setIsGenerating(true);
+                    setTimeout(() => setIsGenerating(false), 3000);
+                  }}
+                  disabled={isGenerating}
+                >
+                  {isGenerating ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-primary-foreground border-t-transparent mr-2" />
+                      Generating...
+                    </>
+                  ) : (
+                    <>
+                      <Zap className="w-4 h-4 mr-2" />
+                      Generate AI Content
+                    </>
+                  )}
                 </Button>
               </CardContent>
             </Card>
